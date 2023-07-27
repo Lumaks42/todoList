@@ -1,0 +1,206 @@
+$font-stack: Play, Helvetica, sans-serif
+$bg: #000
+$textColor: #ddd
+
+*
+  padding: 0
+  margin: 0
+  box-sizing: border-box
+  font: 100% $font-stack
+
+body
+  font: 100% $font-stack
+  background: #333
+  color: $textColor
+
+.wrapper
+  margin: 50px 
+  display: grid
+  gap: 15px
+  grid-template-columns: repeat(auto-fill, 265px)
+
+  li
+    height: 270px
+    list-style: none
+    border-radius: 5px
+    list-style-type: none
+    padding: 15px 20px 20px
+    background: #444
+
+.addBox, .icon, .bottomContent, .content header
+  display: flex
+  align-items: center
+  justify-content: space-between
+
+.addBox
+  flex-direction: column
+  justify-content: center
+  cursor: pointer
+  box-shadow: 0 10px 15px rgb(0, 0, 0, .5)
+
+  .icon
+    height: 116px
+    width: 116px
+    color: #a827e4
+    font-size: 78px
+    border-radius: 50%
+    justify-content: center
+    border: 2px dashed #a827e4
+
+  p
+    font-weight: 500
+    margin-top: 22px
+    text-align: center
+
+.note
+  box-shadow: 0 10px 15px rgba(0, 0, 0,.5)
+
+  .ditails
+    max-height: 165px
+    overflow-y: auto
+
+  p
+    font-size: 22px 
+    font-weight: 500
+    color: white
+
+  span
+    display: block
+    margin-top: 5px
+    color: #bbb
+    font-size: 16px
+
+  .bottomContent
+    display: flex
+    margin-top: 15px
+    padding-top: 15px
+    border-top: 1px solid white
+
+    span
+      color: white
+      font-size: 14px
+
+    .settings
+      display: flex
+      align-items: center
+      justify-content: center
+      width: 38px
+      height: 38px
+      cursor: pointer
+      background-color: white
+      color: black
+      padding: 10px
+      font-size: 24px
+      border-radius: 5px
+      .elem
+        position: absolute
+      
+
+.settings
+  .menu 
+    display: flex
+    margin-right: 60px
+    background: #444
+    padding: 5px
+    transition: transform .3s ease
+    transform: scale(0)
+    transform-origin: bottom right
+    li
+      display: flex
+      align-items: center
+      height: 38px
+      padding: 10px
+      margin: 5px 0 0 10px
+      cursor: pointer
+      background: white
+      font-size: 24px
+      transition: .5s
+
+    
+      &:hover:nth-child(1)
+        transition: .5s
+        background: #6b8dff
+
+      &:hover:nth-child(2)
+        transition: .5s
+        background: #ff6b6b
+
+.settings:hover
+  .menu
+    transform: scale(1)
+    transition: transform .3s ease
+
+.popupBox
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  background-color: rgba(0,0,0,.7)
+  opacity: 1
+  z-index: 99 
+
+  .popupBox.show
+    opacity: 1
+
+  .popup
+    display: flex
+    align-items: center
+    margin: 0 auto
+    height: 100vh
+    z-index: 2
+    max-width: 400px
+    width: 100%
+
+    .content
+      background: #444
+      border-radius: 5px
+
+      form
+        margin: 15px 25px 30px 25px
+
+        textarea
+          height: 15vh
+          resize: none
+
+        & :where(input, textarea)
+          width: 100%
+          border: none
+          border-radius: 5px
+          font-size: 16px
+          outline: none
+          padding: .5em .7em
+          margin: .5em 0
+
+        button
+          border: none
+          border-radius: 5px
+          margin: .5em 0 0 0
+          padding: .5em .7em
+          width: 100%
+          background: #1aff7a
+        
+
+      header
+        padding: 15px 25px
+        border-bottom: 1px solid#fff
+
+        p
+          font-size: 20px
+          font-weight: 500
+
+        .close
+          color: black
+          background: white
+          font-size: 32px
+          border-radius: 5px
+
+.popupBox, .popupBox .popup
+  transform: scale(0)
+  pointer-events: none
+  transition: all .3s ease
+
+.popupBox.show, .popupBox.show .popup
+  height: 100vh
+  transform: scale(1)
+  pointer-events: auto
+  transition: all .3s ease
